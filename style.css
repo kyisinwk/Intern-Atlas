@@ -223,6 +223,7 @@ button:hover {
 }
 
 .interview-link {
+  text-align: center;
   font-weight: bold;
   margin-top: 1rem;
   margin-bottom: 0.3rem;
