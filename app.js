@@ -81,3 +81,35 @@ function displayResults(matches) {
     resultsSection.appendChild(card);
   });
 }
+
+// Elements
+const interest = document.getElementById("interest");
+const locationInput = document.getElementById("location");
+const experience = document.getElementById("experience");
+const gpa = document.getElementById("gpa");
+const pay = document.getElementById("pay");
+const resume = document.getElementById("resume");
+
+// Load saved preferences on page load
+window.onload = () => {
+  if (localStorage.getItem("interest")) interest.value = localStorage.getItem("interest");
+  if (localStorage.getItem("location")) locationInput.value = localStorage.getItem("location");
+  if (localStorage.getItem("experience")) experience.value = localStorage.getItem("experience");
+  if (localStorage.getItem("gpa")) gpa.value = localStorage.getItem("gpa");
+  if (localStorage.getItem("pay")) pay.value = localStorage.getItem("pay");
+  if (localStorage.getItem("resume")) resume.value = localStorage.getItem("resume");
+};
+
+// Save preferences when button is clicked
+function findInternships() {
+  // Save to localStorage
+  localStorage.setItem("interest", interest.value);
+  localStorage.setItem("location", locationInput.value);
+  localStorage.setItem("experience", experience.value);
+  localStorage.setItem("gpa", gpa.value);
+  localStorage.setItem("pay", pay.value);
+  localStorage.setItem("resume", resume.value);
+
+  // Continue with whatever search/display logic you already have
+  alert("Preferences saved. Now finding internships...");
+}
