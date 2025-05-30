@@ -115,8 +115,8 @@ form textarea {
   box-sizing: border-box;
 }
 .form-box label {
+  text-align: left;
   display: block;
-  text-align: right;
-  font-weight: 600;
+  font-weight: bold;
   margin-top: 1rem;
 }
