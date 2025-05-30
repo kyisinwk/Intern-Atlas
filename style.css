@@ -103,13 +103,3 @@ form textarea {
   padding: 10px;
   box-sizing: border-box;
 }
-
-.form-box label {
-  text-align: right;
-}
-
-.form-box input,
-.form-box select {
-  text-align: right;  /* aligns user's typing to the right */
-  direction: rtl;     /* optional: makes placeholder and text go right to left */
-}
