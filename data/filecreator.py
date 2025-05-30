@@ -1,25 +1,36 @@
 import json
 
-# Load the JSON data from jobs.json
-with open('data/jobs.json', 'r') as file:
-    data = json.load(file)
+with open("data/jobs.json", "r") as f:
+    json_data = json.load(f)
 
-# Save formatted output to a text file
-with open('output.txt', 'w') as out:
-    for item in data:
-        title = item.get("job_title", "N/A")
-        field = item.get("sector", "N/A")
-        location = item.get("location", "N/A")
-        pay = "Paid" if item.get("salary") else "Unpaid"
-        experience = "Beginner"  # You can replace with item.get("experience", "Beginner") if it exists
-        gpa = "3.0"              # Replace with item.get("gpa", "3.0") if GPA is in your JSON
-        platform = item.get("job_board", "N/A").replace("jobs.", "").replace(".com", "").capitalize()
+field_map = {
+    "job_title": "Title",
+    "sector": "Field",
+    "location": "Location",
+    "salary": "Pay",
+    "job_type": "Experience",
+    "minimum_gpa": "Minimum GPA",
+    "job_board": "Platform"
+}
 
-        out.write(f"Title: {title}\n")
-        out.write(f"Field: {field}\n")
-        out.write(f"Location: {location}\n")
-        out.write(f"Pay: {pay}\n")
-        out.write(f"Experience: {experience}\n")
-        out.write(f"Minimum GPA: {gpa}\n")
-        out.write(f"Platform: {platform}\n")
-        out.write("---\n")
+def format_entry(entry):
+    lines = []
+    for json_key, label in field_map.items():
+        value = entry.get(json_key, "").strip()
+        if label == "Minimum GPA" and not value:
+            value = "3.0"
+        lines.append(f"{label}: {value}")
+    return "\n".join(lines)
+
+def should_include(entry):
+    return any(
+        key != "salary" and str(entry.get(key, "")).strip()
+        for key in field_map
+    )
+
+valid_entries = [format_entry(e) for e in json_data if should_include(e)]
+
+with open("converted_output.txt", "w") as out:
+    out.write("\n---\n".join(valid_entries))
+
+print("✅ Cleaned and converted output written to converted_output.txt")
