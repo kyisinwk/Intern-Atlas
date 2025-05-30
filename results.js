@@ -1,25 +1,14 @@
 window.onload = function () {
-    // Load saved filters from localStorage
-    const filters = {
-      interest: localStorage.getItem("interest") || "",
-      location: localStorage.getItem("location") || "",
-      experience: localStorage.getItem("experience") || "none",
-      gpa: parseFloat(localStorage.getItem("gpa")) || 0,
-      payPref: localStorage.getItem("payPref") || "paid only",
-      resume: localStorage.getItem("resume") || "no"
-    };
-  
-    // Fetch internship data
+    // Just fetch and show all internships
     fetch("data/internships.txt")
       .then(response => response.text())
       .then(rawText => {
         const internships = parseInternships(rawText);
-        const matches = filterInternships(internships, filters);
-        displayResults(matches);
+        displayResults(internships);
       });
   };
   
-  // Parse raw text into internship objects
+  // Parses plain text format into structured internship objects
   function parseInternships(rawText) {
     const entries = rawText.split("---").map(e => e.trim()).filter(Boolean);
   
@@ -36,30 +25,17 @@ window.onload = function () {
     });
   }
   
-  // Filter based on saved inputs
-  function filterInternships(internships, filters) {
-    return internships.filter(intern => {
-      return (
-        intern["field"]?.toLowerCase().includes(filters.interest) &&
-        (intern["location"]?.toLowerCase().includes(filters.location) || filters.location === "") &&
-        (filters.experience === "none" || intern["experience"]?.toLowerCase() === filters.experience) &&
-        parseFloat(intern["minimum gpa"] || "0") <= filters.gpa &&
-        (filters.payPref === "volunteer ok" || intern["pay"]?.toLowerCase() === filters.payPref)
-      );
-    });
-  }
-  
-  // Show results in the page
-  function displayResults(matches) {
+  // Displays all internships
+  function displayResults(internships) {
     const resultsSection = document.querySelector(".internship-list");
     resultsSection.innerHTML = "";
   
-    if (matches.length === 0) {
-      resultsSection.innerHTML = "<p>No matching internships found. Try adjusting your filters.</p>";
+    if (internships.length === 0) {
+      resultsSection.innerHTML = "<p>No internships found.</p>";
       return;
     }
   
-    matches.forEach(intern => {
+    internships.forEach(intern => {
       const card = document.createElement("div");
       card.className = "card";
       card.innerHTML = `
