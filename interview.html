@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interview Practice | Intern Atlas</title>
+  <link rel="stylesheet" href="style.css"> <!-- reuse your existing CSS -->
+</head>
+<body>
+  <header>
+    <h1>📝 Interview Prep</h1>
+    <p>Practice common internship interview questions.</p>
+  </header>
+
+  <main class="centered-content">
+    <div class="question-card">
+      <h3>🎯 Today's Question</h3>
+      <p id="interview-question"></p>
+    </div>
+  </main>
+
+  <script>
+    const questions = [
+      "Tell me about yourself.",
+      "Why are you interested in this internship?",
+      "Describe a challenge you've overcome.",
+      "What do you hope to learn?",
+      "Tell me about a time you worked on a team.",
+      "How do you manage deadlines and priorities?"
+    ];
+
+    const randomIndex = Math.floor(Math.random() * questions.length);
+    const selected = questions[randomIndex];
+    document.getElementById("interview-question").textContent = `"${selected}"`;
+  </script>
+</body>
+</html>
