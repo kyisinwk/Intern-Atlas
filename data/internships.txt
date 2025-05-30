@@ -1,0 +1,52 @@
+Title: Software Engineering Intern
+Field: Computer Science
+Location: Remote
+Pay: Paid
+Experience: Beginner
+Minimum GPA: 3.0
+Platform: LinkedIn
+---
+Title: Marketing Assistant Intern
+Field: Business
+Location: New York City
+Pay: Stipend
+Experience: None
+Minimum GPA: 2.5
+Platform: Chegg Internships
+---
+
+Title: Data Analyst Intern
+Field: Statistics
+Location: Remote
+Pay: Paid
+Experience: Past internship
+Minimum GPA: 3.5
+Platform: Handshake
+---
+
+Title: Education Outreach Intern
+Field: Education
+Location: Los Angeles
+Pay: Volunteer
+Experience: Beginner
+Minimum GPA: 2.7
+Platform: InternXL
+---
+
+Title: UX Research Intern
+Field: Psychology
+Location: Remote
+Pay: Paid
+Experience: Beginner
+Minimum GPA: 3.2
+Platform: LinkedIn
+---
+
+Title: Finance Operations Intern
+Field: Finance
+Location: Chicago
+Pay: Stipend
+Experience: Past internship
+Minimum GPA: 3.3
+Platform: WayUp
+---
