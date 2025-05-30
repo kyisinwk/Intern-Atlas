@@ -3,7 +3,7 @@ body {
   background: #800000; 
   margin: 0;
   padding: 0;
-  color: white; 
+  color: white;
 }
 
 .container {
@@ -19,17 +19,17 @@ header {
 
 h1 {
   font-size: 2.2rem;
-  color: #FFD700; 
+  color: white; /* Changed from gold to white */
   text-transform: uppercase;
   font-weight: bold;
 }
 
 form {
-  background-color: white; /* Clean white box */
+  background-color: white;
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  color: #333; /* Dark text inside form */
+  color: #333;
 }
 
 label {
@@ -49,9 +49,9 @@ input {
 button {
   width: 100%;
   margin-top: 1.5rem;
-  background-color: #000000; /* Black button */
-  color: white;
-  border: 2px solid white;
+  background-color: #FFD700; /* Bright yellow */
+  color: #000; /* Black text on yellow */
+  border: none;
   padding: 12px;
   border-radius: 8px;
   font-size: 1rem;
@@ -62,15 +62,15 @@ button {
 }
 
 button:hover {
-  background-color: #333333;
+  background-color: #e6c200; /* Slightly darker on hover */
 }
 
 #results {
   margin-top: 2rem;
-  background: rgba(255, 255, 255, 0.85); /* Light transparent white */
+  background: rgba(255, 255, 255, 0.85);
   padding: 1rem;
   border-radius: 10px;
-  color: #000; /* Text readable on light background */
+  color: #000;
 }
 
 #results ul {
