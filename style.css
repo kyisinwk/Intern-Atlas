@@ -1,20 +1,22 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #800000; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   margin: 0;
-  padding: 0;
-  color: white;
+  background: #800000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .container {
-  width: 100%;
-  max-width: 400px;  /* adjust this as needed for content */
-  margin: 0 auto;
-  padding: 2rem;
+  width: 300px;           /* fixed width */
+  height: 350px;          /* fixed height for square shape */
   background-color: white;
   border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-}
+  padding: 1.5rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  color: #333;
+  text-align: center;
 
 header {
   text-align: center;
