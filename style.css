@@ -103,3 +103,9 @@ form textarea {
   padding: 10px;
   box-sizing: border-box;
 }
+.form-box label {
+  display: block;
+  text-align: right;
+  font-weight: 600;
+  margin-top: 1rem;
+}
