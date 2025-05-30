@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Internship Mapper</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>📍 Internship Mapper</h1>
+    <p>Find paid internships that match your goals and location.</p>
+  </header>
+
+  <main>
+    <section id="user-input">
+      <label for="interest">🎓 What's your career interest?</label>
+      <input type="text" id="interest" placeholder="e.g. Data Science">
+
+      <label for="location">📍 Preferred Location:</label>
+      <input type="text" id="location" placeholder="e.g. San Jose or Remote">
+
+      <button onclick="findInternships()">Find Internships</button>
+    </section>
+
+    <section id="results">
+      <!-- Matches will show here -->
+    </section>
+  </main>
+</body>
+<script src="app.js"></script>
+</html>
