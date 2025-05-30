@@ -134,3 +134,39 @@ form textarea {
 .back-button:hover {
   background-color: #ddd;
 }
+
+/* Make the container split the screen */
+.results-container {
+  display: flex;
+  height: calc(100vh - 120px); /* Fill screen below the header */
+  width: 100%;
+}
+
+/* Left side: internship list */
+.internship-list {
+  width: 30%;
+  padding: 1.5rem;
+  overflow-y: auto;
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Right side: map area */
+.map-area {
+  width: 70%;
+  height: 100%;
+  background-color: #e0e0e0; /* Placeholder bg until map is added */
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  color: #333;
+  margin-bottom: 1.5rem;
+  width: 90%;
+  max-width: 500px;
+}
