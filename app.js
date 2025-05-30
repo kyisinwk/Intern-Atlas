@@ -1,14 +1,30 @@
-// When the button is clicked, load and show all internships
+// When the button is clicked, load and filter internships
 function findInternships() {
+  // Get form input values
+  const interest = document.getElementById("interest").value.toLowerCase();
+  const location = document.getElementById("location").value.toLowerCase();
+  const experience = document.getElementById("experience").value.toLowerCase();
+  const gpa = parseFloat(document.getElementById("gpa").value) || 0;
+  const payPref = document.getElementById("payPref").value.toLowerCase();
+  const resume = document.getElementById("resume").value;
+
+  // Fetch internship data
   fetch("data/internships.txt")
     .then(response => response.text())
     .then(rawText => {
       const internships = parseInternships(rawText);
-      displayAll(internships);
+      const matches = filterInternships(internships, {
+        interest,
+        location,
+        experience,
+        gpa,
+        payPref
+      });
+      displayResults(matches);
     });
 }
 
-// Parses plain text format into objects
+// Parses plain text format into structured internship objects
 function parseInternships(rawText) {
   const entries = rawText.split("---").map(e => e.trim()).filter(Boolean);
 
@@ -25,12 +41,32 @@ function parseInternships(rawText) {
   });
 }
 
-// Displays all internships (no filters)
-function displayAll(internships) {
-  const resultsSection = document.getElementById("results");
-  resultsSection.innerHTML = "<h2>All Available Internships</h2>";
+// Filters internships based on user input
+function filterInternships(internships, filters) {
+  return internships.filter(intern => {
+    return (
+      intern["field"]?.toLowerCase().includes(filters.interest) &&
+      (intern["location"]?.toLowerCase().includes(filters.location) || filters.location === "") &&
+      (filters.experience === "none" || intern["experience"]?.toLowerCase() === filters.experience) &&
+      parseFloat(intern["minimum gpa"]) <= filters.gpa &&
+      (filters.payPref === "volunteer" || intern["pay"]?.toLowerCase() === filters.payPref)
+    );
+  });
+}
 
-  internships.forEach(intern => {
+// Displays filtered internships
+function displayResults(matches) {
+  const resultsSection = document.getElementById("results");
+  resultsSection.innerHTML = "";
+
+  if (matches.length === 0) {
+    resultsSection.innerHTML = "<p>No matching internships found. Try adjusting your filters.</p>";
+    return;
+  }
+
+  resultsSection.innerHTML = "<h2>Matching Internships</h2>";
+
+  matches.forEach(intern => {
     const card = document.createElement("div");
     card.innerHTML = `
       <h3>${intern["title"]}</h3>
