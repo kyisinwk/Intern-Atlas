@@ -70,7 +70,7 @@ button:hover {
   background: rgba(255, 255, 255, 0.85); /* Light transparent white */
   padding: 1rem;
   border-radius: 10px;
-  color: #000; /* Text readable on light background */
+  color: #FFD700; /* Text readable on light background */
 }
 
 #results ul {
