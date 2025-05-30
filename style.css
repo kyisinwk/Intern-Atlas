@@ -24,20 +24,9 @@ header {
   margin-bottom: 2rem;
 }
 
-/* h1 {
+h1 {
   font-size: 2.2rem;
-  color: white; 
-  text-transform: uppercase;
-  font-weight: bold;
-} 
-*/
-
-.form-container h1 {
-  text-align: center;
-  font-size: 1.8rem;
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  color: #800000;
+  color: white; /* Changed from gold to white */
   text-transform: uppercase;
   font-weight: bold;
 }
