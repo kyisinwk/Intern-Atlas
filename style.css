@@ -25,6 +25,7 @@ header {
 }
 
 h1 {
+  text-align: center;
   font-size: 2.2rem;
   color: white; /* Changed from gold to white */
   text-transform: uppercase;
@@ -88,7 +89,7 @@ button:hover {
 form {
   display: flex;
   flex-direction: column;
-  align-items: center; /* This centers children horizontally */
+  align-items: left; 
 }
 
 form input,
@@ -102,4 +103,10 @@ form textarea {
   border: 1px solid #ccc;
   padding: 10px;
   box-sizing: border-box;
+}
+.form-box label {
+  text-align: left;
+  display: block;
+  font-weight: bold;
+  margin-top: 1rem;
 }
