@@ -24,12 +24,13 @@ header {
   margin-bottom: 2rem;
 }
 
-h1 {
+/* h1 {
   font-size: 2.2rem;
-  color: white; /* Changed from gold to white */
+  color: white; 
   text-transform: uppercase;
   font-weight: bold;
-}
+} 
+*/
 
 .form-container h1 {
   text-align: center;
