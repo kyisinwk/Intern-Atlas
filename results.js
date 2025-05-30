@@ -1,14 +1,26 @@
 window.onload = function () {
+    // Load filters from localStorage
+    const filters = {
+      interest: localStorage.getItem("interest") || "",
+      location: localStorage.getItem("location") || "",
+      experience: localStorage.getItem("experience") || "none",
+      gpa: parseFloat(localStorage.getItem("gpa")) || 0,
+      payPref: localStorage.getItem("payPref") || "paid only",
+      resume: localStorage.getItem("resume") || "no"
+    };
+  
+    // Fetch internship data and process
     fetch("data/internships.txt")
       .then(response => response.text())
       .then(rawText => {
         const internships = parseInternships(rawText);
-        displayResults(internships);
-        initMap(internships); // initialize the map with markers
+        const matches = filterInternships(internships, filters);
+        displayResults(matches);
+        initMap(matches);
       });
   };
   
-  // Parse internships from plain text
+  // Convert raw text to internship objects
   function parseInternships(rawText) {
     const entries = rawText.split("---").map(e => e.trim()).filter(Boolean);
   
@@ -25,13 +37,36 @@ window.onload = function () {
     });
   }
   
-  // Display internship cards
+  // Filter internships based on saved input
+  function filterInternships(internships, filters) {
+    return internships.filter(intern => {
+      const field = intern["field"]?.toLowerCase() || "";
+      const location = intern["location"]?.toLowerCase() || "";
+      const experience = intern["experience"]?.toLowerCase() || "";
+      const pay = intern["pay"]?.toLowerCase() || "";
+      const minGpa = parseFloat(intern["minimum gpa"] || "0");
+  
+      return (
+        field.includes(filters.interest) &&
+        (location.includes(filters.location) || filters.location === "") &&
+        (filters.experience === "none" || experience === filters.experience) &&
+        minGpa <= filters.gpa &&
+        (
+          filters.payPref === "volunteer ok" ||
+          (filters.payPref === "paid only" && pay === "paid") ||
+          (filters.payPref === "stipend" && pay === "stipend")
+        )
+      );
+    });
+  }
+  
+  // Display internship results as cards
   function displayResults(internships) {
     const resultsSection = document.querySelector(".internship-list");
     resultsSection.innerHTML = "";
   
     if (internships.length === 0) {
-      resultsSection.innerHTML = "<p>No internships found.</p>";
+      resultsSection.innerHTML = "<p>No matching internships found. Try adjusting your filters.</p>";
       return;
     }
   
@@ -52,21 +87,18 @@ window.onload = function () {
     });
   }
   
-  // Initialize Leaflet map
+  // Initialize map and add matching internship markers
   function initMap(internships) {
     const map = L.map("map").setView([39.8283, -98.5795], 4); // Centered on USA
   
-    // Add OpenStreetMap tiles
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: "© OpenStreetMap contributors",
+      attribution: "© OpenStreetMap contributors"
     }).addTo(map);
   
-    // Example: Basic location-based marker using keywords
     internships.forEach(intern => {
       const location = intern["location"]?.toLowerCase();
-  
-      // Simple keyword-based mock locations (replace with real coordinates if possible)
       const coords = getCoordinatesForLocation(location);
+  
       if (coords) {
         L.marker(coords)
           .addTo(map)
@@ -75,12 +107,13 @@ window.onload = function () {
     });
   }
   
-  // Dummy function — replace with real geocoding later
+  // Map city names to coordinates (mocked)
   function getCoordinatesForLocation(location) {
     if (location.includes("san francisco")) return [37.7749, -122.4194];
     if (location.includes("new york")) return [40.7128, -74.0060];
-    if (location.includes("remote")) return null; // skip remote jobs
     if (location.includes("los angeles")) return [34.0522, -118.2437];
     if (location.includes("chicago")) return [41.8781, -87.6298];
-    return null; // Unknown location
+    if (location.includes("seattle")) return [47.6062, -122.3321];
+    if (location.includes("remote")) return null; // Don't map remote roles
+    return null; // Unknown or unhandled location
   }

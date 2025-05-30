@@ -1,6 +1,5 @@
-// Save user input and go to the results page
 function findInternships() {
-  // Get form input values
+  // Get form values
   const interest = document.getElementById("interest").value.toLowerCase();
   const location = document.getElementById("location").value.toLowerCase();
   const experience = document.getElementById("experience").value.toLowerCase();
@@ -8,108 +7,14 @@ function findInternships() {
   const payPref = document.getElementById("pay").value.toLowerCase();
   const resume = document.getElementById("resume").value;
 
-  // Fetch internship data
-  fetch("data/internships.txt")
-    .then(response => response.text())
-    .then(rawText => {
-      const internships = parseInternships(rawText);
-      const matches = filterInternships(internships, {
-        interest,
-        location,
-        experience,
-        gpa,
-        payPref
-      });
-      displayResults(matches);
-    });
-}
+  // Save values to localStorage
+  localStorage.setItem("interest", interest);
+  localStorage.setItem("location", location);
+  localStorage.setItem("experience", experience);
+  localStorage.setItem("gpa", gpa);
+  localStorage.setItem("payPref", payPref);
+  localStorage.setItem("resume", resume);
 
-// Parses plain text format into structured internship objects
-function parseInternships(rawText) {
-  const entries = rawText.split("---").map(e => e.trim()).filter(Boolean);
-
-  return entries.map(entry => {
-    const lines = entry.split("\n").map(line => line.trim()).filter(Boolean);
-    const intern = {};
-    lines.forEach(line => {
-      const [key, value] = line.split(":").map(part => part.trim());
-      if (key && value) {
-        intern[key.toLowerCase()] = value;
-      }
-    });
-    return intern;
-  });
-}
-
-// Filters internships based on user input
-function filterInternships(internships, filters) {
-  return internships.filter(intern => {
-    return (
-      intern["field"]?.toLowerCase().includes(filters.interest) &&
-      (intern["location"]?.toLowerCase().includes(filters.location) || filters.location === "") &&
-      (filters.experience === "none" || intern["experience"]?.toLowerCase() === filters.experience) &&
-      parseFloat(intern["minimum gpa"]) <= filters.gpa &&
-      (filters.payPref === "volunteer" || intern["pay"]?.toLowerCase() === filters.payPref)
-    );
-  });
-}
-
-// Displays filtered internships
-function displayResults(matches) {
-  const resultsSection = document.getElementById("results");
-  resultsSection.innerHTML = "";
-
-  if (matches.length === 0) {
-    resultsSection.innerHTML = "<p>No matching internships found. Try adjusting your filters.</p>";
-    return;
-  }
-
-  resultsSection.innerHTML = "<h2>Matching Internships</h2>";
-
-  matches.forEach(intern => {
-    const card = document.createElement("div");
-    card.innerHTML = `
-      <h3>${intern["title"]}</h3>
-      <p><strong>Field:</strong> ${intern["field"]}</p>
-      <p><strong>Location:</strong> ${intern["location"]}</p>
-      <p><strong>Experience:</strong> ${intern["experience"]}</p>
-      <p><strong>Minimum GPA:</strong> ${intern["minimum gpa"]}</p>
-      <p><strong>Pay:</strong> ${intern["pay"]}</p>
-      <p><strong>Platform:</strong> ${intern["platform"]}</p>
-      <hr>
-    `;
-    resultsSection.appendChild(card);
-  });
-}
-
-// Elements
-const interest = document.getElementById("interest");
-const locationInput = document.getElementById("location");
-const experience = document.getElementById("experience");
-const gpa = document.getElementById("gpa");
-const pay = document.getElementById("pay");
-const resume = document.getElementById("resume");
-
-// Load saved preferences on page load
-window.onload = () => {
-  if (localStorage.getItem("interest")) interest.value = localStorage.getItem("interest");
-  if (localStorage.getItem("location")) locationInput.value = localStorage.getItem("location");
-  if (localStorage.getItem("experience")) experience.value = localStorage.getItem("experience");
-  if (localStorage.getItem("gpa")) gpa.value = localStorage.getItem("gpa");
-  if (localStorage.getItem("pay")) pay.value = localStorage.getItem("pay");
-  if (localStorage.getItem("resume")) resume.value = localStorage.getItem("resume");
-};
-
-// Save preferences when button is clicked
-function findInternships() {
-  // Save to localStorage
-  localStorage.setItem("interest", interest.value);
-  localStorage.setItem("location", locationInput.value);
-  localStorage.setItem("experience", experience.value);
-  localStorage.setItem("gpa", gpa.value);
-  localStorage.setItem("pay", pay.value);
-  localStorage.setItem("resume", resume.value);
-
-  // Continue with whatever search/display logic you already have
-  alert("Preferences saved. Now finding internships...");
+  // Redirect to the results page
+  window.location.href = "results.html";
 }
