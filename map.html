@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Internship Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    #map {
+      width: 100%;
+      height: 100vh;
+    }
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background-color: white;
+      width: 100%;
+      padding: 0.5rem 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    #back {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🗺️ Internship Locations</h1>
+    <a href="index.html" id="back">🔙 Back</a>
+  </header>
+
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([39.8283, -98.5795], 4); // Centered over USA
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+    // Simple city-to-coordinates map
+    const cityCoords = {
+      "new york city": [40.7128, -74.0060],
+      "los angeles": [34.0522, -118.2437],
+      "chicago": [41.8781, -87.6298],
+      "san jose": [37.3382, -121.8863],
+      "remote": [37.7749, -122.4194], // use SF for "remote"
+    };
+
+    fetch("data/internships.txt")
+      .then(response => response.text())
+      .then(rawText => {
+        const entries = rawText.split("---").map(e => e.trim()).filter(Boolean);
+
+        entries.forEach(entry => {
+          const lines = entry.split("\n").map(line => line.trim());
+          let title = "", location = "";
+
+          lines.forEach(line => {
+            const [key, value] = line.split(":").map(part => part.trim().toLowerCase());
+            if (key === "title") title = value;
+            if (key === "location") location = value;
+          });
+
+          const coords = cityCoords[location];
+          if (coords) {
+            L.marker(coords)
+              .addTo(map)
+              .bindPopup(`<strong>${title}</strong><br>${location}`);
+          }
+        });
+      });
+  </script>
+
+</body>
+</html>
