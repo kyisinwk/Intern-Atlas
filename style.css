@@ -1,73 +1,79 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #600009;
-    margin: 0;
-    padding: 0;
-    color: #333;
-  }
-  
-  .container {
-    max-width: 600px;
-    margin: auto;
-    padding: 2rem;
-  }
-  
-  header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  h1 {
-    font-size: 2.2rem;
-    color: #2a5adf;
-  }
-  
-  form {
-    background-color: #fff;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  }
-  
-  label {
-    display: block;
-    margin-top: 1rem;
-    font-weight: 600;
-  }
-  
-  input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 0.5rem;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
-  
-  button {
-    width: 100%;
-    margin-top: 1.5rem;
-    background-color: #2a5adf;
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  button:hover {
-    background-color: #244fc1;
-  }
-  
-  #results {
-    margin-top: 2rem;
-    background: #ffffffb2;
-    padding: 1rem;
-    border-radius: 10px;
-  }
-  
-  #results ul {
-    padding-left: 1rem;
-    line-height: 1.6;
-  }
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #800000; /* De Anza maroon */
+  margin: 0;
+  padding: 0;
+  color: white; /* White text on maroon */
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: 2.2rem;
+  color: #FFD700; /* Gold header like MyPortal banner */
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+form {
+  background-color: white; /* Clean white box */
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #333; /* Dark text inside form */
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  margin-top: 1.5rem;
+  background-color: #000000; /* Black button */
+  color: white;
+  border: 2px solid white;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #333333;
+}
+
+#results {
+  margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.85); /* Light transparent white */
+  padding: 1rem;
+  border-radius: 10px;
+  color: #000; /* Text readable on light background */
+}
+
+#results ul {
+  padding-left: 1rem;
+  line-height: 1.6;
+}
