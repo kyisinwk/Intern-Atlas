@@ -1,9 +1,9 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #800000; /* De Anza maroon */
+  background: #800000; 
   margin: 0;
   padding: 0;
-  color: white; /* White text on maroon */
+  color: white; 
 }
 
 .container {
@@ -19,7 +19,7 @@ header {
 
 h1 {
   font-size: 2.2rem;
-  color: #FFD700; /* Gold header like MyPortal banner */
+  color: #FFD700; 
   text-transform: uppercase;
   font-weight: bold;
 }
