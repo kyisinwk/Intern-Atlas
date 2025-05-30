@@ -4,14 +4,21 @@
   <meta charset="UTF-8">
   <title>Intern Atlas</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
   <div class="homepage-layout">
-    <header>
-      <h1>🎓 Intern Atlas</h1>
-      <p>Find paid internships that match your goals and location.</p>
-    </header>
-
+    <div class="left-column">
+      <header>
+        <h1>🎓 Intern Atlas</h1>
+        <p>Find paid internships that match your goals and location.</p>
+      </header>
+  
+      <div class="mini-map-card">
+        <div id="mini-map"></div>
+      </div>
+    </div>
+  
     <form class="form-box">
       <label for="interest">📚 What's your major?</label>
       <input type="text" id="interest" placeholder="e.g. Data Science">
@@ -47,5 +54,23 @@
   </div>
 
   <script src="app.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  const miniMap = L.map('mini-map', {
+    center: [37.7749, -122.4194], // Example: San Francisco
+    zoom: 4,
+    zoomControl: false,
+    dragging: false,
+    scrollWheelZoom: false,
+    doubleClickZoom: false,
+    boxZoom: false,
+    keyboard: false,
+    tap: false,
+  });
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(miniMap);
+</script>
 </body>
 </html>

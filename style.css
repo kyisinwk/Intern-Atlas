@@ -1,4 +1,5 @@
 /* General page settings */
+/* General page settings */
 body {
   margin: 0;
   padding: 0;
@@ -11,20 +12,25 @@ body {
   display: flex;
   height: 100vh;
   width: 100%;
-  align-items: flex-end; /* Keep title lower left */
+  align-items: flex-start;
   justify-content: space-between;
   padding: 2rem;
   box-sizing: border-box;
-  position: relative;
 }
 
-/* Title and subtitle on bottom-left */
-header {
+/* Left column for title and mini map */
+.left-column {
   flex: 1;
-  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Title and subtitle top-left */
+header {
   color: white;
-  padding: 2rem 1rem 1rem 4rem; /* top, right, bottom, left */
-  margin-top: 1rem; /* nudges it further down */
+  padding: 2rem 1rem 1rem 3rem; /* top, right, bottom, left */
+  margin-top: 1rem;
 }
 
 header h1 {
@@ -39,6 +45,23 @@ header p {
   margin-top: 0.5rem;
 }
 
+/* Mini map card under title */
+.mini-map-card {
+  width: 750px;      /* ⬅️ increase width */
+  height: 400px;     /* ⬅️ increase height */
+  margin-top: 2rem;
+  margin-left: 3rem;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+#mini-map {
+  width: 100%;
+  height: 100%;
+}
+
 /* Form container on the right */
 .form-box {
   width: 400px;
@@ -47,7 +70,8 @@ header p {
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   position: relative;
-  right: 50px; /* ← move left by shifting to the right relative to container */
+  right: 50px; /* moves form slightly to the left */
+  margin-top: 50px;
 }
 
 /* Form elements */
@@ -86,7 +110,7 @@ button:hover {
   background-color: #e6c200;
 }
 
-/* Optional: responsive layout for smaller screens */
+/* Responsive layout */
 @media (max-width: 768px) {
   .homepage-layout {
     flex-direction: column;
@@ -98,6 +122,8 @@ button:hover {
   header {
     align-self: center;
     text-align: center;
+    padding: 1rem;
+    margin: 0;
   }
 
   header h1 {
@@ -107,40 +133,17 @@ button:hover {
   .form-box {
     width: 90%;
     max-width: 400px;
+    position: static;
+  }
+
+  .mini-map-card {
+    width: 90%;
+    max-width: 300px;
+    margin: 1.5rem auto;
   }
 }
 
-#results {
-  margin-top: 2rem;
-  background: rgba(255, 255, 255, 0.85);
-  padding: 1rem;
-  border-radius: 10px;
-  color: #000;
-}
-
-#results ul {
-  padding-left: 1rem;
-  line-height: 1.6;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: left; 
-}
-
-form input,
-form select,
-form textarea {
-  width: 100%;
-  max-width: 500px;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  padding: 10px;
-  box-sizing: border-box;
-}
+/* Results Page Styling */
 
 .back-button {
   display: inline-block;
@@ -158,10 +161,10 @@ form textarea {
   background-color: #ddd;
 }
 
-/* Make the container split the screen */
+/* Container for results.html */
 .results-container {
   display: flex;
-  height: calc(100vh - 120px); /* Fill screen below the header */
+  height: calc(100vh - 120px);
   width: 100%;
 }
 
@@ -180,9 +183,10 @@ form textarea {
 .map-area {
   width: 70%;
   height: 100%;
-  background-color: #e0e0e0; /* Placeholder bg until map is added */
+  background-color: #e0e0e0;
 }
 
+/* Internship cards */
 .card {
   background-color: white;
   border-radius: 12px;
