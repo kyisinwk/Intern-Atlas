@@ -31,6 +31,16 @@ h1 {
   font-weight: bold;
 }
 
+.form-container h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: #800000;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
 form {
   background-color: white;
   padding: 1.5rem;
