@@ -2,51 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Internship Mapper</title>
+  <title>Intern Atlas</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>🎓 Intern Atlas</h1>
-    <p>Find paid internships that match your goals and location.</p>
-  </header>
+  <div class="homepage-layout">
+    <header>
+      <h1>🎓 Intern Atlas</h1>
+      <p>Find paid internships that match your goals and location.</p>
+    </header>
 
-  <main>
-    <section id="user-input">
-  <form class="form-box">
-    <label for="interest">📚 What's your major?</label>
-    <input type="text" id="interest" placeholder="e.g. Data Science">
+    <form class="form-box">
+      <label for="interest">📚 What's your major?</label>
+      <input type="text" id="interest" placeholder="e.g. Data Science">
 
-    <label for="location">📍 Preferred Location:</label>
-    <input type="text" id="location" placeholder="e.g. San Jose or Remote">
+      <label for="location">📍 Preferred Location:</label>
+      <input type="text" id="location" placeholder="e.g. San Jose or Remote">
 
-    <label for="experience">💼 Experience Level:</label>
-    <select id="experience">
-      <option>Beginner</option>
-      <option>Intermediate</option>
-      <option>Advanced</option>
-    </select>
+      <label for="experience">💼 Experience Level:</label>
+      <select id="experience">
+        <option>Beginner</option>
+        <option>Intermediate</option>
+        <option>Advanced</option>
+      </select>
 
-    <label for="gpa">📈 Your GPA (optional):</label>
-    <input type="text" id="gpa" placeholder="e.g. 3.5">
+      <label for="gpa">📈 Your GPA (optional):</label>
+      <input type="text" id="gpa" placeholder="e.g. 3.5">
 
-    <label for="pay">💰 Pay Preference:</label>
-    <select id="pay">
-      <option>Paid Only</option>
-      <option>Stipend</option>
-      <option>Volunteer OK</option>
-    </select>
+      <label for="pay">💰 Pay Preference:</label>
+      <select id="pay">
+        <option>Paid Only</option>
+        <option>Stipend</option>
+        <option>Volunteer OK</option>
+      </select>
 
-    <label for="resume">📁 Do you have a resume or portfolio?</label>
-    <select id="resume">
-      <option>Yes</option>
-      <option>No</option>
-    </select>
+      <label for="resume">📁 Do you have a resume or portfolio?</label>
+      <select id="resume">
+        <option>Yes</option>
+        <option>No</option>
+      </select>
 
-    <button type="button" onclick="findInternships()">Find Internships</button>
-  </form>
-</section>
-  </main>
+      <button type="button" onclick="findInternships()">Find Internships</button>
+    </form>
+  </div>
+
+  <script src="app.js"></script>
 </body>
-<script src="app.js"></script>
 </html>

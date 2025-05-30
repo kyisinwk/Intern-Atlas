@@ -1,78 +1,77 @@
+/* General page settings */
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #800000;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
+  background: #800000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.container {
-  width: 300px;           /* fixed width */
-  height: 350px;          /* fixed height for square shape */
-  background-color: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  color: #333;
-  text-align: center;
-}
-
-header {
-  text-align: center;
-  margin-top: 2rem;
-  margin-bottom: 1.5rem;
-  color: white;
-}
-
-header {
+/* Full-page layout for homepage */
+.homepage-layout {
+  display: flex;
+  height: 100vh;
   width: 100%;
-  text-align: center;
-  margin-top: 40px;
-  margin-bottom: 20px;
+  align-items: flex-end; /* Keep title lower left */
+  justify-content: space-between;
+  padding: 2rem;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Title and subtitle on bottom-left */
+header {
+  flex: 1;
+  align-self: flex-start;
   color: white;
+  padding: 2rem 1rem 1rem 4rem; /* top, right, bottom, left */
+  margin-top: 1rem; /* nudges it further down */
 }
 
 header h1 {
-  font-size: 2.5rem;
+  font-size: 4rem;
   font-weight: bold;
   text-transform: uppercase;
   margin: 0;
 }
 
 header p {
-  margin: 0.5rem 0 0 0;
-  font-size: 1rem;
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
 }
 
-form {
+/* Form container on the right */
+.form-box {
+  width: 400px;
   background-color: white;
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  color: #333;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  position: relative;
+  right: 50px; /* ← move left by shifting to the right relative to container */
 }
 
+/* Form elements */
 label {
   display: block;
   margin-top: 1rem;
   font-weight: 600;
 }
 
-input {
+input,
+select {
   width: 100%;
   padding: 10px;
   margin-top: 0.5rem;
   border-radius: 8px;
   border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 button {
   width: 100%;
   margin-top: 1.5rem;
-  background-color: #FFD700; /* Bright yellow */
-  color: #000; /* Black text on yellow */
+  background-color: #FFD700;
+  color: #000;
   border: none;
   padding: 12px;
   border-radius: 8px;
@@ -84,7 +83,31 @@ button {
 }
 
 button:hover {
-  background-color: #e6c200; /* Slightly darker on hover */
+  background-color: #e6c200;
+}
+
+/* Optional: responsive layout for smaller screens */
+@media (max-width: 768px) {
+  .homepage-layout {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  header {
+    align-self: center;
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 3rem;
+  }
+
+  .form-box {
+    width: 90%;
+    max-width: 400px;
+  }
 }
 
 #results {
