@@ -99,7 +99,7 @@ button:hover {
 form {
   display: flex;
   flex-direction: column;
-  align-items: left; /* This centers children horizontally */
+  align-items: left; 
 }
 
 form input,
