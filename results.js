@@ -113,31 +113,39 @@ window.onload = function () {
   
   // Map city names to coordinates (mocked)
   function getCoordinatesForLocation(location) {
-    if (location.includes("san francisco")) return [37.7749, -122.4194];
+    if (location.includes("houston")) return [29.7604, -95.3698];
+    if (location.includes("denver")) return [39.7392, -104.9903];
     if (location.includes("new york")) return [40.7128, -74.0060];
     if (location.includes("los angeles")) return [34.0522, -118.2437];
     if (location.includes("chicago")) return [41.8781, -87.6298];
     if (location.includes("seattle")) return [47.6062, -122.3321];
-    if (location.includes("remote")) return null; // Don't map remote roles
     if (location.includes("austin")) return [30.2672, -97.7431];
     if (location.includes("boston")) return [42.3601, -71.0589];
-    if (location.includes("houston")) return [29.7604, -95.3698];
     if (location.includes("philadelphia")) return [39.9526, -75.1652];
+    if (location.includes("atlanta")) return [33.7490, -84.3880];
     if (location.includes("miami")) return [25.7617, -80.1918];
     if (location.includes("dallas")) return [32.7767, -96.7970];
-    if (location.includes("denver")) return [39.7392, -104.9903];
-    if (location.includes("atlanta")) return [33.7490, -84.3880];
-    if (location.includes("san diego")) return [32.7157, -117.1611];
-    if (location.includes("phoenix")) return [33.4484, -112.0740];
     if (location.includes("orlando")) return [28.5383, -81.3792];
-    if (location.includes("portland")) return [45.5051, -122.6750];
-    if (location.includes("las vegas")) return [36.1699, -115.1398];
+    if (location.includes("san francisco")) return [37.7749, -122.4194];
     if (location.includes("san jose")) return [37.3382, -121.8863];
-    if (location.includes("minneapolis")) return [44.9778, -93.2650];
+    if (location.includes("san antonio")) return [29.4241, -98.4936];
+    if (location.includes("fort worth")) return [32.7555, -97.3308];
+    if (location.includes("phoenix")) return [33.4484, -112.0740];
     if (location.includes("nashville")) return [36.1627, -86.7816];
+    if (location.includes("minneapolis")) return [44.9778, -93.2650];
+    if (location.includes("cleveland")) return [41.4993, -81.6944];
+    if (location.includes("columbus")) return [39.9612, -82.9988];
+    if (location.includes("madison")) return [43.0731, -89.4012];
     if (location.includes("charlotte")) return [35.2271, -80.8431];
+    if (location.includes("las vegas")) return [36.1699, -115.1398];
     if (location.includes("detroit")) return [42.3314, -83.0458];
-    if (location.includes("washington")) return [38.9072, -77.0369];
+    if (location.includes("jacksonville")) return [30.3322, -81.6557];
+    if (location.includes("indianapolis")) return [39.7684, -86.1581];
+    if (location.includes("tucson")) return [32.2226, -110.9747];
+    if (location.includes("lansing")) return [42.7325, -84.5555];
+    if (location.includes("fort collins")) return [40.5853, -105.0844];
+    if (location.includes("sacramento")) return [38.5816, -121.4944];
+    if (location.includes("remote")) return null;
 
 
     return null; // Unknown or unhandled location
