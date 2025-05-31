@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Interview Practice | Intern Atlas</title>
-  <link rel="stylesheet" href="style.css"> <!-- reuse your existing CSS -->
+  <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
   <header>
@@ -31,6 +31,106 @@
     const randomIndex = Math.floor(Math.random() * questions.length);
     const selected = questions[randomIndex];
     document.getElementById("interview-question").textContent = `"${selected}"`;
+  </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Interview Practice | Intern Atlas</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #800000;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .question-card {
+      background: white;
+      color: #333;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .question-card h3 {
+      margin-bottom: 1rem;
+    }
+
+    .question-card button {
+      margin-top: 1.5rem;
+      background-color: #FFD700;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .question-card button:hover {
+      background-color: #e6c200;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📝 INTERVIEW PREP</h1>
+    <p>Practice common internship interview questions.</p>
+  </header>
+
+  <div class="question-card">
+    <h3>🎯 Question:</h3>
+    <p id="interview-question">Loading...</p>
+    <button onclick="nextQuestion()">Next Question</button>
+  </div>
+
+  <script>
+    const questions = [
+      "Tell me about yourself.",
+      "Why are you interested in this internship?",
+      "Describe a challenge you've overcome.",
+      "What do you hope to learn from this experience?",
+      "Tell me about a time you worked on a team.",
+      "How do you manage deadlines and priorities?",
+      "What’s your biggest strength?",
+      "What’s your biggest weakness?",
+      "How do you handle constructive feedback?",
+      "Tell me about a mistake you made and how you handled it.",
+      "Describe a time you showed leadership.",
+      "How do you stay organized?",
+      "Why should we hire you?",
+      "What’s a project you’re proud of?",
+      "How do you handle working under pressure?",
+      "Describe a time you solved a problem creatively.",
+      "What motivates you to do your best?",
+      "What are your career goals?",
+      "Tell me about a time you had a conflict with a team member.",
+      "What do you know about our company?"
+    ];
+
+    function nextQuestion() {
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      const selected = questions[randomIndex];
+      document.getElementById("interview-question").textContent = `"${selected}"`;
+    }
+
+    window.onload = nextQuestion;
   </script>
 </body>
 </html>
